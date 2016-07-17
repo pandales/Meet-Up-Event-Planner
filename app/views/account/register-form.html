@@ -1,0 +1,56 @@
+<form class="account-form" name="accountForm">
+  <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
+  <h2>Sign up</h2>
+  <md-input-container>
+    <label>Name</label>
+    <input name="name"
+           ng-model="form.account.name"
+           ng-keyup="form.track(accountForm)"
+           required>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Email address</label>
+    <input type="email"
+           name="email"
+           ng-keyup="form.track(accountForm)"
+           ng-model="form.account.email"
+           required>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Password</label>
+    <input type="password"
+           name="password"
+           ng-keyup="form.track(accountForm)"
+           ng-model="form.account.password" required>
+  </md-input-container>
+
+  <md-checkbox
+    ng-model="showMoreInfo"
+    aria-label="Add more info?">
+    biographical information?
+  </md-checkbox>
+
+  <div class="show-more-info" ng-show="showMoreInfo">
+    <h3>biographical information</h3>
+    <md-input-container>
+      <label>Employer</label>
+      <input name="employer" ng-model="form.account.employer">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Job title</label>
+      <input name="job-title" ng-model="form.account.jobTitle">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Birthday</label>
+      <input type="date" name="birthday" ng-model="form.account.birthday">
+    </md-input-container>
+  </div>
+
+  <md-button class="md-raised" ng-click="form.createAccount()">
+    Register Now
+  </md-button>
+</form>
