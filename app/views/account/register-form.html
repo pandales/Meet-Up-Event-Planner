@@ -1,56 +1,90 @@
-<form class="account-form" name="accountForm">
-  <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
-  <h2>Sign up</h2>
-  <md-input-container>
-    <label>Name</label>
-    <input name="name"
-           ng-model="form.account.name"
-           ng-keyup="form.track(accountForm)"
-           required>
+<!-- Angular material has bug that doesn't alllow auto hide the error
+ messages when the the errors are fixed, then each ng-message directive is togueter with a ng-show directive that control when the message must be shown  -->
+ <form class="account-form" name="accountForm">
+  <md-tabs>
+    <md-tab>
+      <md-tab-label>
+        Sign up
+      </md-tab-label>
+      <md-tab-body>
+        <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
+        <md-input-container>
+          <label>Name</label>
+          <input name="name" 
+          autocomplete="name given-name"
+          ng-model="form.account.name"
+          ng-keyup="form.track(accountForm)"
+          required>
+          <div ng-messages="accountForm.name.$error">
+            <div ng-message="required" 
+            ng-show="accountForm.name.$error.required">This is required!</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Email address</label>
+          <input type="email"
+          name="email"
+          ng-keyup="form.track(accountForm)"
+          ng-model="form.account.email"
+          required>
+          <div ng-messages="accountForm.email.$error">
+            <div ng-message="required"
+            ng-show="accountForm.email.$error.required">This is required!</div>
+            <div ng-message="email"
+            ng-show="accountForm.email.$error.email">This field must be a valid email</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+
+          <label>Password</label>
+          <input type="password"
+          name="password"
+          minlength="8"
+          maxlength="16" 
+          ng-keyup="form.track(accountForm)"
+          ng-model="form.account.password" required>
+          <div ng-messages="accountForm.password.$error">
+            <div ng-message="required"
+            ng-show="accountForm.password.$error.required">This is required!</div>
+            <div ng-message="minlength"
+            ng-show="accountForm.password.$error.minlength">minlength</div>
+            <div ng-message="maxlength"
+            ng-show="accountForm.password.$error.maxlength">maxlength</div>
+          </div>
+        </md-input-container>
+        <div class="actions">
+          <md-button class="md-raised" ng-click="form.createAccount()">
+            Register Now
+          </md-button>
+        </div>
+      </md-tab-body>
+    </md-tab-label>
+  </md-tab>
+
+  <md-tab>
+   <md-tab-label>
+    more info
+  </md-tab-label>
+  <md-tab-body>
+   <md-input-container>
+    <label>Employer</label>
+    <input name="employer" ng-model="form.account.employer">
   </md-input-container>
 
   <md-input-container>
-    <label>Email address</label>
-    <input type="email"
-           name="email"
-           ng-keyup="form.track(accountForm)"
-           ng-model="form.account.email"
-           required>
+    <label>Job title</label>
+    <input name="job-title" ng-model="form.account.jobTitle">
   </md-input-container>
 
   <md-input-container>
-    <label>Password</label>
-    <input type="password"
-           name="password"
-           ng-keyup="form.track(accountForm)"
-           ng-model="form.account.password" required>
+    <label>Birthday</label>
+    <input type="date" name="birthday" ng-model="form.account.birthday">
   </md-input-container>
+</div>
+</md-tab-body>
+</md-tab>
+</md-tabs>
 
-  <md-checkbox
-    ng-model="showMoreInfo"
-    aria-label="Add more info?">
-    biographical information?
-  </md-checkbox>
-
-  <div class="show-more-info" ng-show="showMoreInfo">
-    <h3>biographical information</h3>
-    <md-input-container>
-      <label>Employer</label>
-      <input name="employer" ng-model="form.account.employer">
-    </md-input-container>
-
-    <md-input-container>
-      <label>Job title</label>
-      <input name="job-title" ng-model="form.account.jobTitle">
-    </md-input-container>
-
-    <md-input-container>
-      <label>Birthday</label>
-      <input type="date" name="birthday" ng-model="form.account.birthday">
-    </md-input-container>
-  </div>
-
-  <md-button class="md-raised" ng-click="form.createAccount()">
-    Register Now
-  </md-button>
 </form>
