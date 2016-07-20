@@ -11,11 +11,15 @@ angular.module('meetUpEventPlannerApp')
   .service('formTracker', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var getErrors = function(angularForm) {
-      var errors = 0;
+      var fieldsWithError = {};
       for (var errorType in angularForm.$error) {
-        errors += angularForm.$error[errorType].length;
+        for (var field in angularForm.$error[errorType]) {
+          fieldsWithError[angularForm.$error[errorType][field].$name] = true;
+        }
       }
-      return errors;
+
+      //  return the amount of fields with error
+      return Object.keys(fieldsWithError).length;
     };
 
     return {

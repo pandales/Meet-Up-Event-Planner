@@ -8,18 +8,20 @@
  * Service in the meetUpEventPlannerApp.
  */
 angular.module('meetUpEventPlannerApp')
-  .service('account', function () {
-  	var id = 1;
+  .service('account',['$localstorage', function ($localstorage) {
+  	this.currentAccount = {};
     return {
       create: function (account) {
-        console.log(account);
+        var accounts = $localstorage.get("account", []);
+        accounts.push(account);
+        $localstorage.set('accounts', accounts);
+        this.currentAccount = account;
       },
       login: function (userInfo) {
 
       },
-      get: function (id) {
+      getCurrentAccount: function (id) {
 
       }
-
     }
-  });
+  }]);

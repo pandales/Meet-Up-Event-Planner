@@ -12,15 +12,26 @@ angular.module('meetUpEventPlannerApp')
     var vm = this;
     vm.completedPercent = 0;
     vm.account = {};
+    vm.registered = false;
 
     vm.createAccount = function () {
-      account.create(vm.account);
+      console.log(accountForm);
+      //account.create(vm.account);
+      //vm.registered = true;
+    };
+
+    vm.saveData = function () {
+
+
     };
 
     formTracker.init(accountForm);
 
     vm.track = function (form) {
-
       vm.completedPercent = formTracker.getPercent(form);
-    }
+    };
+
+    vm.passwordValidation = function () {
+      return false;
+    };
   }]);
