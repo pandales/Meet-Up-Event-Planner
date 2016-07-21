@@ -13,16 +13,17 @@ angular.module('meetUpEventPlannerApp')
     vm.completedPercent = 0;
     vm.account = {};
     vm.registered = false;
+    vm.accountId = false;
 
     vm.createAccount = function () {
-      console.log(accountForm);
-      //account.create(vm.account);
-      //vm.registered = true;
+      account.create(vm.account);
+
+      // Show the optional info form after the user creation
+      vm.registered = true;
     };
 
-    vm.saveData = function () {
-
-
+    vm.updateAccount = function () {
+      account.updateAccount();
     };
 
     formTracker.init(accountForm);
