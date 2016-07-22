@@ -1,1 +1,102 @@
-<p>This is the event/add-event view.</p>
+<form id="addEventForm" name="addEventForm">
+	<md-input-container>
+		<label>Name of the event</label>
+		<input name="name"
+		ng-model="form.event.name"
+		ng-keyup="form.track(addEventForm)"
+		required>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+	<md-input-container>
+		<md-autocomplete
+		md-floating-label="What is your event about?" 
+		placeholder="What is your event about?"
+		md-selected-item="selectedItem" 
+		md-search-text="searchText" 
+		md-items="item in form.suggestEventType(searchText)" md-item-text="item">
+		  <span md-highlight-text="searchText">{{item}}</span>
+		</md-autocomplete>
+	</md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+
+	<md-input-container>
+		<label>Type of the event</label>
+		<input name="name"
+		autocomplete="name given-name"
+		ng-model="form.event.name"
+		ng-keyup="form.track(addEventForm)"
+		required>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+
+	<md-input-container>
+		<label>Event Host</label>
+		<input name="name"
+		autocomplete="name given-name"
+		ng-model="form.event.name"
+		ng-keyup="form.track(addEventForm)"
+		required>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+	
+	<md-input-container>
+		<label>Event Date</label>
+		<input name="name"
+		autocomplete="name given-name"
+		ng-model="form.event.name"
+		ng-keyup="form.track(addEventForm)"
+		required>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+
+	<md-input-container>
+		<label>Guest List</label>
+		<textarea>
+
+		</textarea>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+
+	<md-input-container>
+		<label>Location</label>
+		<input name="name"
+		autocomplete="name given-name"
+		ng-model="form.event.name"
+		ng-keyup="form.track(addEventForm)"
+		required>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+
+	<md-input-container>
+	<label>Message to guests</label>
+		<textarea>
+
+		</textarea>
+		<div ng-messages="addEventForm.name.$error">
+			<div ng-message="required">This is required!</div>
+		</div>
+	</md-input-container>
+
+</form>

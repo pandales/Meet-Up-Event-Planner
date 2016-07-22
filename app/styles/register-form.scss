@@ -1,46 +1,13 @@
-form {
-	h2 {
-		margin-bottom: 1em;
-	}
-	md-checkbox {
-
-
-	.md-container.md-ink-ripple {
-		right: 0;
-		left: auto;
-	}
-
-	.md-label{
-		float:left;
-		margin-left: 0;
-		padding-right: 30px;
-	}
-}
-.actions {
-	text-align: center;
-}
-}
-
-
-@media screen and (max-width: 504px) {
-
-  md-input-container {
-    width: 100%;
-    display: block;
-  }
-}
-
 @media screen and (min-width: 505px) {
-  #accountForm {
-    text-align: center;
+	#accountForm {
+		text-align: center;
 
-    md-input-container {
-      text-align: left;
-      width: 32%;
-    }
-  }
+		md-input-container {
+			text-align: left;
+			width: 32%;
+		}
+	}
 }
-
 
 
 

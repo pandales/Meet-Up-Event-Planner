@@ -9,9 +9,14 @@
  */
 angular.module('meetUpEventPlannerApp')
   .controller('EventAddCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    var vm = this;
+    vm.sugestionForTypeEvent = [
+    	'birthday party',
+    	'conference talk',
+    	'wedding'
     ];
+
+    vm.suggestEventType = function (q) {
+    	return vm.sugestionForTypeEvent;
+    }
   });

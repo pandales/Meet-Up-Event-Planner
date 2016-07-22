@@ -21,7 +21,7 @@
              ng-keyup="form.track(accountForm)"
              ng-model="form.account.email"
              required>
-      <div ng-messages="accountForm.email.$error">
+      <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched">
         <div ng-message="required">This is required!
         </div>
         <div ng-message="email">This field must be a valid email
@@ -38,13 +38,14 @@
              password-validator
              ng-keyup="form.track(accountForm)"
              ng-model="form.account.password" required>
-      <div ng-messages="accountForm.password.$error">
+      <div ng-messages="accountForm.password.$error" role="alert" ng-show="accountForm.password.$touched">
         <div ng-message="required">Password is required!</div>
-        <div ng-message="invalidpassword">
+        <div ng-message="invalidpassword" ng-show="accountForm.password.$error.invalidpassword">
           <div ng-repeat="message in accountForm.password.passwordRequerimentsMessage">{{message}}</div>
         </div>
       </div>
     </md-input-container>
+
     <div class="actions">
       <md-button class="md-raised" ng-click="form.createAccount()" ng-disabled="accountForm.$invalid">
         Register Now
