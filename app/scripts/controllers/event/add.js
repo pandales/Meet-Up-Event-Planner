@@ -8,15 +8,26 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventAddCtrl', function () {
+  .controller('EventAddCtrl', ['event','formTracker', function (event, formTracker) {
     var vm = this;
-    vm.sugestionForTypeEvent = [
-    	'birthday party',
-    	'conference talk',
-    	'wedding'
-    ];
+    vm.completedPercent = 0;
+    vm.form = {};
+
+    // set the min day as the current day
+    vm.today = new Date();
+
+    formTracker.init(addEventForm);
 
     vm.suggestEventType = function (q) {
-    	return vm.sugestionForTypeEvent;
+    	return event.getTypes(q);
+    };
+
+    vm.track = function (form) {
+      vm.completedPercent = formTracker.getPercent(form);
+    };
+
+    vm.add = function () {
+      event.add(form.event);
     }
-  });
+
+  }]);

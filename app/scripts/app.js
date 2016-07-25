@@ -12,7 +12,8 @@ angular
   .module('meetUpEventPlannerApp', [
     'ui.router',
     'ngMaterial',
-    'ngMessages'
+    'ngMessages',
+    'ngMaterialDatePicker'
   ])
   .config(['$stateProvider', '$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
 
