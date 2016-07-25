@@ -71,9 +71,12 @@
              required>
     </md-input-container>
   </div>
+
   <md-input-container>
     <label>Guest List</label>
-		<textarea ng-model="form.event.guests" required>
+		<textarea ng-model="form.event.guests" 
+              placeholder="guest1@domain.com, guest2@domain.com ..." 
+              required>
 
 		</textarea>
     <div ng-messages="addEventForm.name.$error">
@@ -82,13 +85,14 @@
   </md-input-container>
 
   <md-input-container>
-    <label>Location</label>
-    <input name="name"
+    <label for="address">Address</label>
+    <input name="address"
+           id="address"
            autocomplete="name given-name"
-           ng-model="form.event.name"
+           ng-model="form.event.address"
            ng-keyup="form.track(addEventForm)"
            required>
-    <div ng-messages="addEventForm.name.$error">
+    <div ng-messages="addEventForm.address.$error">
       <div ng-message="required">This is required!</div>
     </div>
   </md-input-container>

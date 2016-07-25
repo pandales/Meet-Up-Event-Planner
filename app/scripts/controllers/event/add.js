@@ -8,10 +8,17 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventAddCtrl', ['event','formTracker', function (event, formTracker) {
+  .controller('EventAddCtrl', ['event','formTracker', 'geoLocation', function (event, formTracker, geoLocation) {
     var vm = this;
     vm.completedPercent = 0;
     vm.form = {};
+
+    setTimeout(function() {
+      geoLocation.initAutocomplete(document.getElementById("address"));
+    }, 500);
+    
+
+
 
     // set the min day as the current day
     vm.today = new Date();
