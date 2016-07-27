@@ -8,21 +8,14 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventAddCtrl', ['event','formTracker', 'geoLocation', function (event, formTracker, geoLocation) {
+  .controller('EventAddCtrl', ['event','formTracker', function (event, formTracker) {
     var vm = this;
     vm.completedPercent = 0;
-    vm.form = {};
+    vm.event = {};
 
-    setTimeout(function() {
-      geoLocation.initAutocomplete(document.getElementById("address"));
-    }, 500);
-    
-
-
-
-    // set the min day as the current day
+     // set the min day as the current day
     vm.today = new Date();
-
+  
     formTracker.init(addEventForm);
 
     vm.suggestEventType = function (q) {
@@ -30,11 +23,13 @@ angular.module('meetUpEventPlannerApp')
     };
 
     vm.track = function (form) {
+      console.log("tracking");
       vm.completedPercent = formTracker.getPercent(form);
     };
 
     vm.add = function () {
-      event.add(form.event);
+  
+      event.add(vm.event);
     }
 
   }]);

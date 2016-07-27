@@ -13,9 +13,15 @@ angular
     'ui.router',
     'ngMaterial',
     'ngMessages',
-    'ngMaterialDatePicker'
+    'ngMaterialDatePicker',
+    'uiGmapgoogle-maps' 
   ])
-  .config(['$stateProvider', '$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider','uiGmapGoogleMapApiProvider',
+    function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApi) {
+      uiGmapGoogleMapApi.configure({
+        key: 'AIzaSyBNOwSDWSRjxXf0fc4nYYm1D6BWdSM6PY4',
+        libraries: 'weather,geometry,visualization,places'
+      });
 
     $urlRouterProvider.otherwise("/");
 
@@ -47,6 +53,9 @@ angular
         controller: 'AccountRegisterFormCtrl',
         controllerAs: 'form'
       })
-
       ;
+
+    
+      
+
   }]);

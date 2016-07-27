@@ -1,0 +1,11 @@
+  <input 
+  name="{{name}}"
+  id="{{id}}"
+  autocomplete="name given-name"
+  ng-model="ngModel.text"
+  ng-keyup="ngKeyup"
+  placeholder="{{placeholder}}" 
+  required="required">
+  <div ng-messages="addEventForm.address.$error">
+    <div ng-message="required">This is required!</div>
+  </div>

@@ -60,7 +60,8 @@
         <p><span class="glyphicon glyphicon-barcode"></span> By Ricardo Pandales</p>
       </div>
     </div>
-
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNOwSDWSRjxXf0fc4nYYm1D6BWdSM6PY4&signed_in=true&libraries=places"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -86,6 +87,13 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/momentjs/moment.js"></script>
     <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+    <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -101,10 +109,8 @@
         <script src="scripts/services/form-tracker.js"></script>
         <script src="scripts/directives/passwordvalidator.js"></script>
         <script src="scripts/services/event.js"></script>
-        <script src="scripts/services/geo-location.js"></script>
+        <script src="scripts/directives/googlelocationinput.js"></script>
         <!-- endbuild -->
 
-         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNOwSDWSRjxXf0fc4nYYm1D6BWdSM6PY4&signed_in=true&libraries=places"
-        async defer></script>
 </body>
 </html>
