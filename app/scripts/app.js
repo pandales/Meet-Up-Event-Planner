@@ -47,6 +47,13 @@ angular
         controllerAs: 'form'
       })
 
+      .state('view-event', {
+        'url': '/events/:id',
+        templateUrl: 'views/event/view.html',
+        controller: 'EventViewCtrl',
+        controllerAs: 'ctrl'
+      })
+
       .state('register-form', {
         'url': '/sign-up',
         templateUrl: 'views/account/register-form.html',

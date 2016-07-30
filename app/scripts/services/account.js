@@ -35,6 +35,8 @@ angular.module('meetUpEventPlannerApp')
 
       },
       getCurrentAccount: function () {
+        // TODO: delete the next line is only for tests
+        currentAccount = $localstorage.getObject("accounts")[0];
         return currentAccount;
       },
       updateAccount: function () {
@@ -45,6 +47,9 @@ angular.module('meetUpEventPlannerApp')
         });
         accounts[accountIndex] = currentAccountReference;
         $localstorage.setObject('accounts', accounts);
+
+        // TODO: Redirect to event creation with a message to invite the user
+        // to create a event
       }
     }
   }]);
