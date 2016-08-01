@@ -1,2 +1,9 @@
-<p>This is the event/view view.</p>
+<md-toolbar class="md-hue-2">{{ctrl.event.name}}</md-toolbar>
+
+<ui-gmap-google-map center='ctrl.event.address.location.center'
+                    zoom='15'>
+
+</ui-gmap-google-map>
+
+
 <pre>{{ctrl.event | json}}</pre>

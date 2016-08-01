@@ -62,11 +62,6 @@ angular.module('meetUpEventPlannerApp')
       // Get the place details from the autocomplete object.
       var place = autocomplete.getPlace();
 
-      /*for (var component in componentForm) {
-       document.getElementById(component).value = '';
-       document.getElementById(component).disabled = false;
-       }*/
-
       // Get each component of the address from the place details
       // and fill the corresponding field on the form.
       for (var i = 0; i < place.address_components.length; i++) {
@@ -76,7 +71,12 @@ angular.module('meetUpEventPlannerApp')
           addressObject[addressType] = val;
         }
       }
+
       scope.ngModel.location = addressObject;
+      scope.ngModel.location.center = {
+        latitude: place.geometry.location.lat(),
+        longitude: place.geometry.location.lng()
+      };
     }
 
 // [END region_fillform]

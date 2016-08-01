@@ -14,7 +14,7 @@ angular
     'ngMaterial',
     'ngMessages',
     'ngMaterialDatePicker',
-    'uiGmapgoogle-maps' 
+    'uiGmapgoogle-maps'
   ])
   .config(['$stateProvider', '$urlRouterProvider','uiGmapGoogleMapApiProvider',
     function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApi) {
@@ -62,7 +62,7 @@ angular
       })
       ;
 
-    
-      
+
+
 
   }]);
