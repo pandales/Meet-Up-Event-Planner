@@ -48,12 +48,13 @@
             <input mdc-datetime-picker
                    type="datetime"
                    name="start-date"
-                   ng-model="from.event.startDate"
+                   ng-model="form.event.startDate"
                    id="start-date"
                    date="true"
                    time="true"
                    short-time="false"
                    min-date="form.today"
+                   class=" md-input"
                    required>
         </md-input-container>
 
@@ -62,13 +63,14 @@
             <input mdc-datetime-picker
                    type="datetime"
                    name="end-date"
-                   ng-model="from.event.endDate"
-                   ng-disabled="!from.event.startDate"
+                   ng-model="form.event.endDate"
+                   ng-disabled="!form.event.startDate"
                    id="end-date"
                    date="true"
                    time="true"
                    short-time="true"
-                   min-date="from.event.startDate"
+                   min-date="form.event.startDate"
+                   class=" md-input"
                    required>
         </md-input-container>
     </div>
@@ -114,4 +116,4 @@
         </md-button>
     </div>
 </form>
-<pre>{{form.currentUser | json}}</pre>
+<pre>{{form.event | json}}</pre>

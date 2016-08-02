@@ -22,6 +22,7 @@ angular.module('meetUpEventPlannerApp')
         add: function (eventData) {
           eventData.id = events.length;
           eventData.user_id = account.getCurrentAccount().id;
+          eventData.guests = eventData.guests.split(",");
           events.push(eventData);
           $localstorage.setObject("events", events);
           $state.go("view-event", {id: eventData.id});
