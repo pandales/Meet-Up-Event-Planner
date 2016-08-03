@@ -8,10 +8,7 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventIndexCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('EventIndexCtrl', ['event', function (event) {
+    var ctrl = this;
+    ctrl.events = event.getAll();
+  }]);

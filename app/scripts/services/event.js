@@ -44,6 +44,9 @@ angular.module('meetUpEventPlannerApp')
               return option;
             }
           });
+        },
+        getAll: function () {
+          return events;
         }
       }
     }]);

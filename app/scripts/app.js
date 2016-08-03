@@ -37,7 +37,7 @@ angular
         'url': '/events',
         templateUrl: 'views/event/index.html',
         controller: 'EventIndexCtrl',
-        controllerAs: 'form'
+        controllerAs: 'ctrl'
       })
 
       .state('add-event', {

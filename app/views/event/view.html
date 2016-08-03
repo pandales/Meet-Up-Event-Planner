@@ -7,6 +7,9 @@
     </md-card-header>
     <ui-gmap-google-map ng-show="ctrl.event.address.location.center" center='ctrl.event.address.location.center'
                         zoom='15'>
+        <ui-gmap-marker coords="ctrl.event.address.location.center"
+                        idKey="1">
+        </ui-gmap-marker>
 
     </ui-gmap-google-map>
 
@@ -16,10 +19,11 @@
             <div flex>{{ctrl.event.address.text}}</div>
         </div>
         <div layout="row"  layout-padding>
-            <div flex="nogrow">When: </div>
-            <div flex>
-                <div flex>From </div>
-                <div flex="20">to</div>
+            <div flex="nogrow">Date: </div>
+            <div flex layout-align-sm="column">
+                <div flex>{{ctrl.event.startDate | date : "M/d/yy h:mm a" }}</div>
+                <div flex="nogrown">to</div>
+                <div flex>{{ctrl.event.endDate | date : "M/d/yy h:mm a"}}</div>
             </div>
         </div>
         <div layout="row"  layout-padding>
@@ -38,4 +42,3 @@
         </p>
     </md-card-content>
 </md-card>
-<pre>{{ctrl.event.guests | json}}</pre>
