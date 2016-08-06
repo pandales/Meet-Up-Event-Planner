@@ -1,82 +1,85 @@
-<form id="accountForm" name="accountForm">
-    <section class="form-panel" ng-hide="form.registered">
-        <h2> Sign up </h2>
-        <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
-        <md-input-container>
-            <label>Name</label>
-            <input name="name"
-                   autocomplete="name given-name"
-                   ng-model="form.account.name"
-                   ng-keyup="form.track(accountForm)"
-                   required>
-            <div ng-messages="accountForm.name.$error">
-                <div ng-message="required">This is required!</div>
-            </div>
-        </md-input-container>
-
-        <md-input-container>
-            <label>Email address</label>
-            <input type="email"
-                   name="email"
-                   ng-keyup="form.track(accountForm)"
-                   ng-model="form.account.email"
-                   required>
-            <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched">
-                <div ng-message="required">This is required!
+<md-content>
+    <form id="accountForm" name="accountForm">
+        <section class="form-panel" ng-hide="form.registered">
+            <h2> Sign up </h2>
+            <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
+            <md-input-container>
+                <label>Name</label>
+                <input name="name"
+                       autocomplete="name given-name"
+                       ng-model="form.account.name"
+                       ng-keyup="form.track(accountForm)"
+                       required>
+                <div ng-messages="accountForm.name.$error">
+                    <div ng-message="required">This is required!</div>
                 </div>
-                <div ng-message="email">This field must be a valid email
+            </md-input-container>
+
+            <md-input-container>
+                <label>Email address</label>
+                <input type="email"
+                       name="email"
+                       ng-keyup="form.track(accountForm)"
+                       ng-model="form.account.email"
+                       required>
+                <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched">
+                    <div ng-message="required">This is required!
+                    </div>
+                    <div ng-message="email">This field must be a valid email
+                    </div>
                 </div>
-            </div>
-        </md-input-container>
+            </md-input-container>
 
-        <md-input-container>
-            <label>Password</label>
-            <input type="password"
-                   name="password"
-                   minlength="8"
-                   maxlength="16"
-                   password-validator
-                   ng-keyup="form.track(accountForm)"
-                   ng-model="form.account.password" required>
-            <div ng-messages="accountForm.password.$error" role="alert" ng-show="accountForm.password.$touched">
-                <div ng-message="required">Password is required!</div>
-                <div ng-message="invalidpassword" ng-show="accountForm.password.$error.invalidpassword">
-                    <div ng-repeat="message in accountForm.password.passwordRequerimentsMessage">{{message}}</div>
+            <md-input-container>
+                <label>Password</label>
+                <input type="password"
+                       name="password"
+                       minlength="8"
+                       maxlength="16"
+                       password-validator
+                       ng-keyup="form.track(accountForm)"
+                       ng-model="form.account.password" required>
+                <div ng-messages="accountForm.password.$error" role="alert" ng-show="accountForm.password.$touched">
+                    <div ng-message="required">Password is required!</div>
+                    <div ng-message="invalidpassword" ng-show="accountForm.password.$error.invalidpassword">
+                        <div ng-repeat="message in accountForm.password.passwordRequerimentsMessage">{{message}}</div>
+                    </div>
                 </div>
+            </md-input-container>
+
+            <div class="actions">
+                <md-button class="md-raised" ng-click="form.createAccount()" ng-disabled="accountForm.$invalid">
+                    Register Now
+                </md-button>
             </div>
-        </md-input-container>
+        </section>
 
-        <div class="actions">
-            <md-button class="md-raised" ng-click="form.createAccount()" ng-disabled="accountForm.$invalid">
-                Register Now
-            </md-button>
-        </div>
-    </section>
+        <section class="form-panel" ng-show="form.registered">
+            <p>Hello {{form.account.name}}, thanks for register! let us now more about you or simply <a
+                    ui-sref="add-event">create
+                a new event</a>
+            </p>
+            <h3>more info</h3>
+            <md-input-container>
+                <label>Employer</label>
+                <input name="employer" ng-model="form.account.employer" autocomplete="organization">
+            </md-input-container>
 
-    <section class="form-panel" ng-show="form.registered">
-        <p>Hello {{form.account.name}}, thanks for register! let us now more about you or simply <a ui-sref="add-event">create
-            a new event</a>
-        </p>
-        <h3>more info</h3>
-        <md-input-container>
-            <label>Employer</label>
-            <input name="employer" ng-model="form.account.employer" autocomplete="organization">
-        </md-input-container>
+            <md-input-container>
+                <label>Job title</label>
+                <input name="job-title" ng-model="form.account.jobTitle" autocomplete="organization-title">
+            </md-input-container>
 
-        <md-input-container>
-            <label>Job title</label>
-            <input name="job-title" ng-model="form.account.jobTitle" autocomplete="organization-title">
-        </md-input-container>
-
-        <md-input-container>
-            <label>Birthday</label>
-            <input type="date" name="birthday" ng-model="form.account.birthday" autocomplete="bday">
-        </md-input-container>
-        <div class="actions">
-            <md-button class="md-raised" ng-click="form.updateAccount()">
-                Save
-            </md-button>
-        </div>
-        </div>
-    </section>
-</form>
+            <md-input-container>
+                <label>Birthday</label>
+                <input type="date" name="birthday" ng-model="form.account.birthday" autocomplete="bday">
+            </md-input-container>
+            <div class="actions">
+                <md-button class="md-raised" ng-click="form.updateAccount()">
+                    Save
+                </md-button>
+            </div>
+            </div>
+        </section>
+    </form>
+</md-content>

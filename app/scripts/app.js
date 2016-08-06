@@ -23,7 +23,7 @@ angular
         libraries: 'weather,geometry,visualization,places'
       });
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/events-list");
 
     $stateProvider
       .state('home', {
