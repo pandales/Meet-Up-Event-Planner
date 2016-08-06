@@ -37,8 +37,8 @@
                 <a ui-sref="events-list"> Events</a>
             </md-tab>
             <md-tab id="tab2" aria-controls="tab2-content">
-                <a ui-sref="register-form" ng-show="false"> Register</a>
-                <a ui-sref="add-event" >Add Event</a>
+                <a ui-sref="register-form" ng-hide="ctrl.account"> Register</a>
+                <a ui-sref="add-event" ng-show="ctrl.account">Add Event</a>
             </md-tab>
         </md-tabs>
     </md-toolbar>
