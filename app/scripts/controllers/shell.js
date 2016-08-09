@@ -11,6 +11,5 @@ angular.module('meetUpEventPlannerApp')
   .controller('ShellCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog', 'account',
     function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, account) {
       var ctrl = this;
-      ctrl.account = account.getCurrentAccount();
-
+      ctrl.account = account;
   }]);

@@ -1,79 +1,75 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-    <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css"/>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css"/>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 </head>
 <body ng-app="meetUpEventPlannerApp" ng-controller="ShellCtrl as ctrl">
 <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+  your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
 <div layout="column" class="relative" layout-fill role="main">
-    <md-toolbar class="animate-show md-tall md-whiteframe-z1">
-        <div class="md-toolbar-tools">
-            <h3>
-                MeetUps Events
-            </h3>
-        </div>
-        <span flex></span>
-        <md-tabs md-stretch-tabs="always" md-selected="data.selectedIndex">
-            <md-tab id="tab1" aria-controls="tab1-content">
-                <a ui-sref="events-list"> Events</a>
-            </md-tab>
-            <md-tab id="tab2" aria-controls="tab2-content">
-                <a ui-sref="register-form" ng-hide="ctrl.account"> Register</a>
-                <a ui-sref="add-event" ng-show="ctrl.account">Add Event</a>
-            </md-tab>
-        </md-tabs>
-    </md-toolbar>
-    <md-content flex>
-        <ui-view layout="column" layout-fill layout-padding id="content"></ui-view>
-
-        <md-divider></md-divider>
-        <div layout="row"
-             layout-padding
-             flex="noshrink"
-             layout-align="center center"
-             class="layout-align-center-center layout-row flex-noshrink">
-            <div id="license-footer" flex="" class="ng-binding flex">
-                By Ricardo Pandales
-            </div>
-        </div>
-    </md-content>
-
-
+  <md-toolbar id="header">
+    <div class="md-toolbar-tools">
+      <h3>
+        MeetUps Events
+      </h3>
+    </div>
+    <md-tabs md-stretch-tabs="always" md-selected="data.selectedIndex">
+      <md-tab aria-controls="tab1-content">
+        <a ui-sref="events-list"> Events</a>
+      </md-tab>
+      <md-tab aria-controls="tab2-content">
+        <a ui-sref="register-form" ng-hide="ctrl.account.isLogged"> Register</a>
+        <a ui-sref="add-event" ng-show="ctrl.account.isLogged">Add Event</a>
+      </md-tab>
+    </md-tabs>
+  </md-toolbar>
+  <md-content flex layout-fill layout="column">
+    <!--  layout-fill-->
+    <ui-view layout="column" id="content" flex="grow" layout-padding="">
+    </ui-view>
+    <div layout="row"
+         flex="nogrow"
+         layout-align="center center">
+      <div id="footer" flex="">
+        By Ricardo Pandales
+      </div>
+    </div>
+  </md-content>
 </div>
 
 <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNOwSDWSRjxXf0fc4nYYm1D6BWdSM6PY4&signed_in=true&libraries=places"></script>
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNOwSDWSRjxXf0fc4nYYm1D6BWdSM6PY4&signed_in=true&libraries=places"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
-    !function (A, n, g, u, l, a, r) {
-        A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
-                    (A[l].q = A[l].q || []).push(arguments)
-                }, A[l].l = +new Date, a = n.createElement(g),
-                r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  !function (A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
 </script>
 
 <!-- build:js(.) scripts/vendor.js -->

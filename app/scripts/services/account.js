@@ -10,7 +10,9 @@
 angular.module('meetUpEventPlannerApp')
   .service('account',['$localstorage', function ($localstorage) {
     var self = this;
-    var currentAccount = {};
+    //var currentAccount = {};
+    //TODO:
+    var currentAccount = $localstorage.getObject("accounts")[0]
     return {
       create: function (accountData) {
         var accounts = $localstorage.getObject("accounts") || [];
@@ -18,7 +20,7 @@ angular.module('meetUpEventPlannerApp')
         accounts.push(accountData);
         $localstorage.setObject('accounts', accounts);
         currentAccount = accountData;
-        self.isLogged = true;
+        this.isLogged = true;
 
         return accountData.id;
       },
@@ -29,7 +31,7 @@ angular.module('meetUpEventPlannerApp')
         });
 
         if (accountIndex >= 0) {
-          self.isLogged = true;
+          this.isLogged = true;
           currentAccount = accounts[accountIndex];
         }
 
@@ -50,6 +52,7 @@ angular.module('meetUpEventPlannerApp')
 
         // TODO: Redirect to event creation with a message to invite the user
         // to create a event
-      }
+      },
+      isLogged: (_.size(currentAccount) > 0)
     }
   }]);

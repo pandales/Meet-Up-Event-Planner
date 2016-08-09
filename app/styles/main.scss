@@ -13,10 +13,7 @@ body {
   padding: 0;
 }
 
-#content {
-  margin: 0 auto;
-  max-width: 960px;
-}
+@import 'shell';
 @import 'register-form';
 @import 'forms';
 @import 'add-event-form';

@@ -26,12 +26,12 @@ angular
     $urlRouterProvider.otherwise("/events-list");
 
     $stateProvider
-      .state('home', {
+     /* .state('home', {
         'url': '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
-      })
+      })*/
 
       .state('events-list', {
         'url': '/events',
