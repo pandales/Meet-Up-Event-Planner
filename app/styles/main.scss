@@ -13,6 +13,10 @@ body {
   padding: 0;
 }
 
+md-progress-linear {
+  margin-bottom: 30px !important;
+}
+
 @import 'shell';
 @import 'register-form';
 @import 'forms';

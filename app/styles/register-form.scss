@@ -5,6 +5,10 @@
 		md-input-container {
 			text-align: left;
 			width: 32%;
+			.md-input-messages-animation {
+				position: absolute;
+				top: 40px;
+			}
 		}
 	}
 }

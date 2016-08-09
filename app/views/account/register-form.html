@@ -6,7 +6,7 @@
       <md-input-container>
         <label>Name</label>
         <input name="name"
-               autocomplete="name given-name"
+               autocomplete="name"
                ng-model="form.account.name"
                ng-keyup="form.track(accountForm)"
                required
@@ -20,6 +20,7 @@
         <label>Email address</label>
         <input type="email"
                name="email"
+               autocomplete="email"
                ng-keyup="form.track(accountForm)"
                ng-model="form.account.email"
                required>
