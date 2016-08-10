@@ -11,8 +11,8 @@
                ng-keyup="form.track(accountForm)"
                required
                autofocus>
-        <div ng-messages="accountForm.name.$error">
-          <div ng-message="required">This is required!</div>
+        <div ng-messages="accountForm.name.$error" role="alert">
+          <div ng-message="required">The name is required</div>
         </div>
       </md-input-container>
 
@@ -24,11 +24,9 @@
                ng-keyup="form.track(accountForm)"
                ng-model="form.account.email"
                required>
-        <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched">
-          <div ng-message="required">This is required!
-          </div>
-          <div ng-message="email">This field must be a valid email
-          </div>
+        <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched" role="alert">
+          <div ng-message="required">The email address is required</div>
+          <div ng-message="email">The email must be a valid email address</div>
         </div>
       </md-input-container>
 
@@ -41,8 +39,8 @@
                password-validator
                ng-keyup="form.track(accountForm)"
                ng-model="form.account.password" required>
-        <div ng-messages="accountForm.password.$error" role="alert" ng-show="accountForm.password.$touched">
-          <div ng-message="required">Password is required!</div>
+        <div ng-messages="accountForm.password.$error" ng-show="accountForm.password.$touched" role="alert">
+          <div ng-message="required">Password is required</div>
           <div ng-message="invalidpassword" ng-show="accountForm.password.$error.invalidpassword">
             <div ng-repeat="message in accountForm.password.passwordRequerimentsMessage">{{message}}</div>
           </div>

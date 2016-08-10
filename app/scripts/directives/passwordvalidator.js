@@ -20,38 +20,38 @@ angular.module('meetUpEventPlannerApp')
 
           if (attrs.hasOwnProperty("minlength") && value.length < attrs.minlength) {
             isValid = false;
-            message.push("fewer than " + attrs.minlength + " characters");
+            message.push(attrs.name + " must be fewer than " + attrs.minlength + " characters");
           }
 
           if (attrs.hasOwnProperty("maxlength") && value.length > attrs.maxlength) {
             isValid = false;
-            message.push("greater than " + attrs.maxlength + " characters");
+            message.push(attrs.name + " must be greater than " + attrs.maxlength + " characters");
           }
 
           if (!value.match(/[\!\@\#\$\%\^\&\*]/g)) {
             isValid = false;
-            message.push("missing a symbol (!, @, #, $, %, ^, &, *)");
+            message.push(attrs.name + " must have a symbol (!, @, #, $, %, ^, &, *)");
           }
 
           if (!value.match(/\d/g)) {
             isValid = false;
-            message.push("missing a number");
+            message.push(attrs.name + " must have a number");
           }
 
           if (!value.match(/[a-z]/g)) {
             isValid = false;
-            message.push("missing a lowercase letter");
+            message.push(attrs.name + " must have a lowercase letter");
           }
           if (!value.match(/[A-Z]/g)) {
             isValid = false;
-            message.push("missing an uppercase letter");
+            message.push(attrs.name + " must be have an uppercase letter");
           }
 
           var illegalCharacterGroup = value.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
           if (illegalCharacterGroup) {
             isValid = false;
             illegalCharacterGroup.forEach(function (illegalChar) {
-              message.push("includes illegal character: " + illegalChar);
+              message.push(attrs.name + " contains and illegal character: " + illegalChar);
             });
           }
 
