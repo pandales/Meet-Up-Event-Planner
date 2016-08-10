@@ -1,0 +1,9 @@
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header,
+.dtp div.dtp-date,
+.dtp div.dtp-time,
+.dtp table.dtp-picker-days tr > td > a.selected,
+.dtp .dtp-actual-meridien a.selected,
+.dtp .dtp-picker-time > a.dtp-select-hour.selected,
+.dtp .dtp-hand.on{
+  background: rgb(63,81,181);
+}
