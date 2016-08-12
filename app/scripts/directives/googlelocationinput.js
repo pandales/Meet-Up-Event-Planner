@@ -24,6 +24,7 @@ angular.module('meetUpEventPlannerApp')
       restrict: 'E',
       scope: {
         ngModel: "=",
+        form: "=",
         ngKeyup: "@",
         id: "@",
         placeholder: "@",

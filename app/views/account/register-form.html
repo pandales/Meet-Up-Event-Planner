@@ -11,7 +11,7 @@
                ng-keyup="form.track(accountForm)"
                required
                autofocus>
-        <div ng-messages="accountForm.name.$error" role="alert">
+        <div ng-messages="accountForm.name.$error"  ng-show="accountForm.name.$touched" role="alert">
           <div ng-message="required">The name is required</div>
         </div>
       </md-input-container>

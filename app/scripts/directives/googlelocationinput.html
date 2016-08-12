@@ -6,6 +6,6 @@
        ng-keyup="ngKeyup"
        placeholder="{{placeholder}}"
        required="required">
-<div ng-messages="addEventForm.address.$error">
+<div ng-messages="form[name].$error">
     <div ng-message="required">This is required!</div>
 </div>

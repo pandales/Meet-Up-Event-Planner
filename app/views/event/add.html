@@ -1,121 +1,126 @@
 <md-content>
-  <form id="addEventForm" name="addEventForm">
-    <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
-    <md-input-container>
-      <label>Name of the event</label>
-      <input name="event-name"
-             ng-model="form.event.name"
-             ng-keyup="form.track(addEventForm)"
-             autofocus
-             required>
-      <div ng-messages="addEventForm.name.$error">
-        <div ng-message="required">This is required!</div>
-      </div>
-    </md-input-container>
+    <form id="addEventForm" name="addEventForm">
+        <h2> Create an event </h2>
+        <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
+        <md-input-container>
+            <label>Name of the event</label>
+            <input name="eventName"
+                   ng-model="form.event.name"
+                   ng-keyup="form.track(addEventForm)"
+                   required
+                   autofocus>
+            <div ng-messages="addEventForm.eventName.$error" ng-show="addEventForm.eventName.$touched" role="alert">
+                <div ng-message="required">The event name is required</div>
+            </div>
+        </md-input-container>
 
-    <md-autocomplete
-      md-search-text="form.event.type"
-      md-floating-label="What is your event about?"
-      placeholder="What is your event about?"
-      md-selected-item="form.event.typeSelected"
-      md-items="item in form.suggestEventType(form.event.type)"
-      md-item-text="item"
-      md-input-name="type"
-      md-input-id="type"
-      ng-keyup="form.track(addEventForm)"
-      required>
-      <span md-highlight-text="form.even.type">{{item}}</span>
-    </md-autocomplete>
+        <md-autocomplete md-search-text="form.event.type"
+                         md-floating-label="What is your event about?"
+                         placeholder="What is your event about?"
+                         md-selected-item="form.event.typeSelected"
+                         md-items="item in form.suggestEventType(form.event.type)"
+                         md-item-text="item"
+                         md-input-name="type"
+                         md-input-id="type"
+                         ng-keyup="form.track(addEventForm)"
+                         required>
+            <md-item-template>
+                <span md-highlight-text="form.event.type">{{item}}</span>
+            </md-item-template>
+            <div ng-messages="addEventForm.type.$error" ng-show="addEventForm.type.$touched" role="alert">
+                <div ng-message="required">The event type is required</div>
+            </div>
 
-
-    <md-input-container>
-      <label for="eventHost">Event Host</label>
-      <input name="event-host"
-             id="eventHost"
-             autocomplete="name"
-             ng-model="form.event.host"
-             ng-keyup="form.track(addEventForm)"
-             required>
-      <div ng-messages="addEventForm.event-host.$error">
-        <div ng-message="required">This is required!</div>
-      </div>
-    </md-input-container>
-
-    <div class="event-date">
-      <h5>When will the event be?</h5>
+        </md-autocomplete>
 
 
-      <md-input-container flex-gt-md="30">
-        <label for="start-date">Start date</label>
-        <input mdc-datetime-picker
-               type="datetime"
-               name="start-date"
-               ng-model="form.event.startDate"
-               id="start-date"
-               date="true"
-               time="true"
-               short-time="false"
-               min-date="form.today"
-               class=" md-input"
-               required>
-      </md-input-container>
+        <md-input-container>
+            <label for="eventHost">Event Host</label>
+            <input name="eventHost"
+                   id="eventHost"
+                   autocomplete="name"
+                   ng-model="form.event.host"
+                   ng-keyup="form.track(addEventForm)"
+                   required>
+            <div ng-messages="addEventForm.eventHost.$error" ng-show="addEventForm.eventHost.$touched" role="alert">
+                <div ng-message="required">The event host is required</div>
+            </div>
+        </md-input-container>
 
-      <md-input-container flex-gt-md="30">
-        <label for="end-date">End date</label>
-        <input mdc-datetime-picker
-               type="datetime"
-               name="end-date"
-               ng-model="form.event.endDate"
-               ng-disabled="!form.event.startDate"
-               id="end-date"
-               date="true"
-               time="true"
-               short-time="true"
-               min-date="form.event.startDate"
-               class=" md-input"
-               required>
-      </md-input-container>
-    </div>
+        <md-input-container md-no-float="true">
+            <google-location-input ng-model="form.event.address"
+                                   form="addEventForm"
+                                   label="Address"
+                                   id="address"
+                                   name="address"
+                                   placeholder="insert a location"
+                                   ng-keyup="form.track(addEventForm)"
+                                   required></google-location-input>
+        </md-input-container>
 
-    <md-input-container>
-      <label>Guest List</label>
-  <textarea ng-model="form.event.guests"
-            placeholder="guest1@domain.com, guest2@domain.com ..."
-            required>
+        <div class="event-date">
+            <h5>When will the event be?</h5>
 
-</textarea>
-      <div ng-messages="addEventForm.guests.$error">
-        <div ng-message="required">This is required!</div>
-      </div>
-    </md-input-container>
+            <md-input-container class="datetime">
+                <label for="startDate">Start date</label>
+                <input type="datetime-local"
+                       name="startDate"
+                       ng-model="form.event.startDate"
+                       id="startDate"
+                       min="form.today"
+                       class=" md-input"
+                       required>
+                <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
+                    <div ng-message="required">The start date is required</div>
+                </div>
+            </md-input-container>
 
-    <md-input-container md-no-float="true">
-      <google-location-input ng-model="form.event.address"
-                             label="Address"
-                             id="address"
-                             name="address"
-                             placeholder="insert a location"
-                             ng-keyup="form.track(addEventForm)"
-                             required></google-location-input>
-    </md-input-container>
+            <md-input-container class="datetime">
 
-    <md-input-container>
-      <label>Message to guests (optional)</label>
-  <textarea
-    name="message"
-    ng-model="form.event.message">
+                <label for="endDate">End date</label>
+                <input type="datetime-local"
+                       name="endDate"
+                       ng-model="form.event.endDate"
+                       ng-disabled="!form.event.startDate"
+                       id="endDate"
+                       min="form.event.startDate"
+                       class=" md-input"
+                       required>
+                <div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.endDate.$touched" role="alert">
+                    <div ng-message="required">The end date is required</div>
+                </div>
+            </md-input-container>
+        </div>
 
-</textarea>
-      <div ng-messages="addEventForm.message.$error">
-        <div ng-message="required">This is required!</div>
-      </div>
-    </md-input-container>
-    <div class="actions">
-      <md-button class="md-raised"
-                 ng-disabled="addEventForm.$invalid"
-                 ng-click="form.add()">
-        Save
-      </md-button>
-    </div>
-  </form>
+        <md-input-container>
+            <label for="guests">Guest List</label>
+            <textarea ng-model="form.event.guests"
+                      id="guests"
+                      name="guests"
+                      placeholder="guest1@domain.com, guest2@domain.com ..."
+                      required>
+
+            </textarea>
+            <div ng-messages="addEventForm.guests.$error"
+                 ng-show="addEventForm.guests.$touched"
+                 role="alert">
+                <div ng-message="required">You must invite to some people using their email addresses</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label for="message">Message to guests (optional)</label>
+            <textarea name="message"
+                      id="message"
+                      ng-model="form.event.message">
+            </textarea>
+        </md-input-container>
+        <div class="actions">
+            <md-button class="md-raised"
+                       ng-disabled="addEventForm.$invalid"
+                       ng-click="form.add()">
+                Save
+            </md-button>
+        </div>
+    </form>
 </md-content>
