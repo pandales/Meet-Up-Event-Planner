@@ -47,16 +47,16 @@
             </div>
         </md-input-container>
 
-        <md-input-container md-no-float="true">
-            <google-location-input ng-model="form.event.address"
-                                   form="addEventForm"
-                                   label="Address"
-                                   id="address"
-                                   name="address"
-                                   placeholder="insert a location"
-                                   ng-keyup="form.track(addEventForm)"
-                                   required></google-location-input>
-        </md-input-container>
+
+        <google-location-input ng-model="form.event.address"
+                               form="addEventForm"
+                               label="Address"
+                               id="address"
+                               name="address"
+                               placeholder="insert a location"
+                               ng-keyup="form.track(addEventForm)"
+                               required></google-location-input>
+
 
         <div class="event-date">
             <h5>When will the event be?</h5>

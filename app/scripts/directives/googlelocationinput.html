@@ -1,11 +1,13 @@
-<label for="{{id}}">{{label}}</label>
-<input name="{{name}}"
-       id="{{id}}"
-       autocomplete="name given-name"
-       ng-model="ngModel.text"
-       ng-keyup="ngKeyup"
-       placeholder="{{placeholder}}"
-       required="required">
-<div ng-messages="form[name].$error">
-    <div ng-message="required">This is required!</div>
-</div>
+<md-input-container class="google-location">
+    <label for="{{id}}">{{label}}</label>
+    <input name="{{name}}"
+           id="{{id}}"
+           autocomplete="name given-name"
+           ng-model="ngModel.text"
+           ng-keyup="ngKeyup"
+
+           required="required">
+    <div ng-messages="form[name].$error">
+        <div ng-message="required">This is required!</div>
+    </div>
+</md-input-container>

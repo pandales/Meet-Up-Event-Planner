@@ -33,20 +33,23 @@ angular.module('meetUpEventPlannerApp')
         label: "@"
       },
       link: function postLink(scope, element, attrs) {
-        var htmlElement = element[0].querySelector("input");
+        var inputElement = element[0].querySelector("input");
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
-        autocomplete = new google.maps.places.Autocomplete(htmlElement,
+        autocomplete = new google.maps.places.Autocomplete(inputElement,
           {types: ['geocode']});
 
-        autocomplete.addListener('place_changed', fillInAddress.bind("", scope, htmlElement));
-        htmlElement.addEventListener('keyup', function (e) {
+        autocomplete.addListener('place_changed', fillInAddress.bind("", scope, inputElement));
+        inputElement.addEventListener('keyup', function (e) {
           if (e.keyCode != "32"  && typeof scope.ngModel != 'undefined' &&
             typeof scope.ngModel.location != 'undefined') {
             scope.ngModel.location = null;
           }
         });
+
+        // Remove the default google placeholder
+        inputElement.placeholder = "";
       }
     };
 
