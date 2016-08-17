@@ -60,20 +60,7 @@
 
         <div class="event-date">
             <h5>When will the event be?</h5>
-
-            <md-input-container class="datetime">
-                <label for="startDate">Start date</label>
-                <input type="datetime-local"
-                       name="startDate"
-                       ng-model="form.event.startDate"
-                       id="startDate"
-                       min="form.today"
-                       class=" md-input"
-                       required>
-                <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
-                    <div ng-message="required">The start date is required</div>
-                </div>
-            </md-input-container>
+            <panda-datetime> </panda-datetime>
 
             <md-input-container class="datetime">
 

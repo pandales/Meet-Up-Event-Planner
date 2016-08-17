@@ -9,10 +9,19 @@
 angular.module('meetUpEventPlannerApp')
   .directive('pandaDatetime', function () {
     return {
-      template: '<div></div>',
+      templateUrl: 'scripts/directives/panda-datetime.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-        element.text('this is the pandaDatetime directive');
+
+        if (Modernizr.inputtypes["datetime-local"]) {
+
+          // Remove mdc-date-picker
+          element[0].childNodes[2].remove();
+        } else {
+
+          // Remove datetime-local input
+          element[0].childNodes[0].remove();
+        }
       }
     };
   });
