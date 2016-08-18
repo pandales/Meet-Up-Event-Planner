@@ -23,7 +23,6 @@ angular.module('meetUpEventPlannerApp')
     return {
       templateUrl: 'scripts/directives/progress-form.html',
       restrict: 'E',
-      transclude: true,
       scope: {
         form: "="
       },
