@@ -1,12 +1,11 @@
 <md-content>
     <form id="addEventForm" name="addEventForm">
         <h2> Create an event </h2>
-        <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
+        <progress-form form="addEventForm"></progress-form>
         <md-input-container>
             <label>Name of the event</label>
             <input name="eventName"
                    ng-model="form.event.name"
-                   ng-keyup="form.track(addEventForm)"
                    required
                    autofocus>
             <div ng-messages="addEventForm.eventName.$error" ng-show="addEventForm.eventName.$touched" role="alert">
@@ -22,7 +21,6 @@
                          md-item-text="item"
                          md-input-name="type"
                          md-input-id="type"
-                         ng-keyup="form.track(addEventForm)"
                          required>
             <md-item-template>
                 <span md-highlight-text="form.event.type">{{item}}</span>
@@ -40,7 +38,6 @@
                    id="eventHost"
                    autocomplete="name"
                    ng-model="form.event.host"
-                   ng-keyup="form.track(addEventForm)"
                    required>
             <div ng-messages="addEventForm.eventHost.$error" ng-show="addEventForm.eventHost.$touched" role="alert">
                 <div ng-message="required">The event host is required</div>
@@ -54,13 +51,17 @@
                                id="address"
                                name="address"
                                placeholder="insert a location"
-                               ng-keyup="form.track(addEventForm)"
                                required></google-location-input>
 
 
         <div class="event-date">
             <h5>When will the event be?</h5>
-            <panda-datetime> </panda-datetime>
+            <panda-datetime name="startDate"
+                            ng-model="form.event.startDate"
+                            id="startDate"
+                            min="form.today"
+                            label="Start date"
+                            required="true"></panda-datetime>
 
             <md-input-container class="datetime">
 
@@ -85,7 +86,7 @@
                       id="guests"
                       name="guests"
                       placeholder="guest1@domain.com, guest2@domain.com ..."
-                      required>
+                      required="">
 
             </textarea>
             <div ng-messages="addEventForm.guests.$error"
@@ -109,5 +110,6 @@
                 Save
             </md-button>
         </div>
+
     </form>
 </md-content>

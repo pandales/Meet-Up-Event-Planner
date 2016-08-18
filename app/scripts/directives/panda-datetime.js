@@ -11,8 +11,15 @@ angular.module('meetUpEventPlannerApp')
     return {
       templateUrl: 'scripts/directives/panda-datetime.html',
       restrict: 'E',
+      scope: {
+        ngModel: "=",
+        ngKeyup: "@",
+        id: "@",
+        required: "@",
+        name: "@",
+        label: "@"
+      },
       link: function postLink(scope, element, attrs) {
-
         if (Modernizr.inputtypes["datetime-local"]) {
 
           // Remove mdc-date-picker

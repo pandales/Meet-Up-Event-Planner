@@ -24,10 +24,6 @@ angular.module('meetUpEventPlannerApp')
         return event.getTypes(q);
       };
 
-      vm.track = function (form) {
-        vm.completedPercent = formTracker.getPercent(form);
-      };
-
       vm.add = function () {
         event.add(vm.event);
       }

@@ -1,5 +1,5 @@
 <md-content>
-  <div id="eventIndex">
+  <div id="eventIndex" ng-show="ctrl.events.length">
     <md-card ng-repeat="event in ctrl.events">
       <md-card-header>
         <md-card-header-text>
@@ -29,4 +29,7 @@
       </md-card-actions>
     </md-card>
   </div>
+    <div id="notEvents" ng-hide="ctrl.events.length">
+        <h2>There are not events at the moment</h2>
+    </div>
 </md-content>

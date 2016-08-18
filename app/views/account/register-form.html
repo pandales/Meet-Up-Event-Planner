@@ -2,13 +2,11 @@
   <form id="accountForm" name="accountForm" layout="row">
     <section class="form-panel" ng-hide="form.registered" layout-fill="">
       <h2> Sign up </h2>
-      <md-progress-linear md-mode="determinate" ng-value="form.completedPercent"></md-progress-linear>
-      <md-input-container>
+      <progress-form form="accountForm"></progress-form><md-input-container>
         <label>Name</label>
         <input name="name"
                autocomplete="name"
                ng-model="form.account.name"
-               ng-keyup="form.track(accountForm)"
                required
                autofocus>
         <div ng-messages="accountForm.name.$error"  ng-show="accountForm.name.$touched" role="alert">
@@ -21,7 +19,6 @@
         <input type="email"
                name="email"
                autocomplete="email"
-               ng-keyup="form.track(accountForm)"
                ng-model="form.account.email"
                required>
         <div ng-messages="accountForm.email.$error" ng-show="accountForm.email.$touched" role="alert">
@@ -37,7 +34,6 @@
                minlength="8"
                maxlength="16"
                password-validator
-               ng-keyup="form.track(accountForm)"
                ng-model="form.account.password" required>
         <div ng-messages="accountForm.password.$error" ng-show="accountForm.password.$touched" role="alert">
           <div ng-message="required">Password is required</div>
