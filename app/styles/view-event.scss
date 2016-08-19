@@ -38,10 +38,9 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   max-width: none;
 }
 
-/* uncomment this if you are using the <google-map> element instead of a div
 .angular-google-map {
   display: block;
-  }*/
+  }
 
 .custom-info-window {
   background: rgba(0, 0, 0, 0.5);
@@ -74,4 +73,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 .md-chips md-chip{
   font-size: 0.75em;
+}
+
+p.description {
+  padding-top: 25px;
 }
