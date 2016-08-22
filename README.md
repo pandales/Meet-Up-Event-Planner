@@ -4,9 +4,8 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 version 0.15.1.
 
 ## Build & development
+ * Run `npm install` for isntall the required node libraries.
 
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+ * Run `bower install` for install the required bower libraries.
+    * you must select angular-material#~1.0.6
+ * Run `grunt` for building and `grunt serve` for preview.
