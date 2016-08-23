@@ -8,8 +8,8 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventAddCtrl', ['event', 'formTracker', 'account',
-    function (event, formTracker, account) {
+  .controller('EventAddCtrl', ['event', 'formTracker', 'account', '$timeout',
+    function (event, formTracker, account, $timeout) {
       var vm = this;
       vm.completedPercent = 0;
       vm.event = {};
@@ -26,6 +26,9 @@ angular.module('meetUpEventPlannerApp')
 
       vm.add = function () {
         event.add(vm.event);
-      }
+      };
+      $timeout(function(){
+       document.getElementById("eventName").focus();
+      });
 
     }]);

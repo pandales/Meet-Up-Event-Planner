@@ -61,8 +61,4 @@ angular
         controllerAs: 'form'
       })
       ;
-
-
-
-
   }]);

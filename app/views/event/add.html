@@ -3,8 +3,9 @@
         <h2> Create an event </h2>
         <progress-form form="addEventForm"></progress-form>
         <md-input-container>
-            <label>Name of the event</label>
-            <input name="eventName"
+            <label for="eventName">Name of the event</label>
+            <input id="eventName"
+                   name="eventName"
                    ng-model="form.event.name"
                    required
                    autofocus>
