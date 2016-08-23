@@ -4,7 +4,7 @@
            name="{{name}}"
            ng-model="ngModel"
            id="{{id}}"
-           min="{{min}}"
+           min="{{minDate}}"
            class="md-input"
            required="{{required}}">
     <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
@@ -22,7 +22,7 @@
            date="true"
            time="true"
            short-time="false"
-           min-date="form.today"
+           min-date="{{min}}"
            class="md-input"
            required="{{required}}">
 </md-input-container>

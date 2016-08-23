@@ -17,9 +17,11 @@ angular.module('meetUpEventPlannerApp')
         id: "@",
         required: "@",
         name: "@",
-        label: "@"
+        label: "@",
+        min:"="
       },
       link: function postLink(scope, element, attrs) {
+        scope.minDate = scope.dateToString(scope.min);
         if (Modernizr.inputtypes["datetime-local"]) {
 
           // Remove mdc-date-picker
@@ -29,6 +31,10 @@ angular.module('meetUpEventPlannerApp')
           // Remove datetime-local input
           element[0].childNodes[0].remove();
         }
+
+        scope.dateToString = function (date) {
+          return date.toISOString().slice(0,17) + "00";;
+        };
       }
     };
   });

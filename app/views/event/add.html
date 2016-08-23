@@ -72,7 +72,7 @@
                        ng-model="form.event.endDate"
                        ng-disabled="!form.event.startDate"
                        id="endDate"
-                       min="form.event.startDate"
+                       min="2016-08-10T06:01:00.00"
                        class=" md-input"
                        required>
                 <div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.endDate.$touched" role="alert">
@@ -87,6 +87,7 @@
                       id="guests"
                       name="guests"
                       placeholder="guest@domain.com, guest2@domain.com ..."
+                      email-list-validator
                       required="">
 
             </textarea>
@@ -94,6 +95,7 @@
                  ng-show="addEventForm.guests.$touched"
                  role="alert">
                 <div ng-message="required">You must invite to some people using their email addresses</div>
+                <div ng-message="invalidemail">You must write valid email addresses</div>
             </div>
         </md-input-container>
 
