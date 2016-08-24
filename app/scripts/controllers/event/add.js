@@ -15,9 +15,13 @@ angular.module('meetUpEventPlannerApp')
       vm.event = {};
       vm.currentUser = account.getCurrentAccount();
 
+      vm.dateToString =  function (date) {
+        return date.toISOString().slice(0,17) + "00";
+      };
+
       // set the min day as the current day
       vm.today = new Date();
-      console.log(vm.today.getTime());
+      vm.minDate = vm.dateToString(vm.today);
 
       formTracker.init(addEventForm);
 

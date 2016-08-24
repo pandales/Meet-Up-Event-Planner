@@ -56,27 +56,46 @@
 
 
         <div class="event-date">
-            <h5>When will the event be?</h5>
-            <panda-datetime name="startDate"
+            <h5>Event Date</h5>
+            <!--<panda-datetime name="startDate"
                             ng-model="form.event.startDate"
                             id="startDate"
                             min="form.today"
                             label="Start date"
                             required="true"></panda-datetime>
+            -->
+            <md-input-container class="datetime">
+                <label for="startDate">Start date</label>
+                <input type="datetime-local"
+                       name="startDate"
+                       ng-model="form.event.startDate"
+                       id="startDate"
+                       min="{{form.minDate}}"
+                       panda-min-date="{{form.today}}"
+                       class="md-input"
+                       required>
+                <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
+                    <div ng-message="required">The {{label}} is required</div>
+                    <div ng-message="mindatelocal">The start date time must be greater than now</div>
+                </div>
+            </md-input-container>
 
             <md-input-container class="datetime">
 
-                <label for="endDate">End date</label>
+                <label for="endDate">End date time</label>
                 <input type="datetime-local"
                        name="endDate"
                        ng-model="form.event.endDate"
                        ng-disabled="!form.event.startDate"
                        id="endDate"
-                       min="2016-08-10T06:01:00.00"
-                       class=" md-input"
+                       ng-focus="startDate = form.dateToString(form.event.startDate)"
+                       min="{{startDate}}"
+                       panda-min-date="{{form.event.startDate}}"
+                       class="md-input"
                        required>
                 <div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.endDate.$touched" role="alert">
                     <div ng-message="required">The end date is required</div>
+                    <div ng-message="mindatelocal">The end date time must be less than start date</div>
                 </div>
             </md-input-container>
         </div>

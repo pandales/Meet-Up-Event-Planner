@@ -5,11 +5,16 @@
            ng-model="ngModel"
            id="{{id}}"
            min="{{minDate}}"
+           panda-min-date="{{min}}"
            class="md-input"
            required="{{required}}">
     <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
-        <div ng-message="required">The {{label}}is required</div>
+        <div ng-message="required">The {{label}} is required</div>
+        <div ng-message="mindatelocal">The date is not allowed</div>
+        <div ng-message="min">The date is not allowed</div>
+
     </div>
+    {{addEventForm.startDate.$error}}
 </md-input-container>
 
 <md-input-container class="mdc-datetime-picker">
@@ -22,7 +27,7 @@
            date="true"
            time="true"
            short-time="false"
-           min-date="{{min}}"
+           min-date=""
            class="md-input"
            required="{{required}}">
 </md-input-container>
