@@ -15,7 +15,7 @@
 
         <md-input-container>
             <label for="type">What is your event about?</label>
-            <input list="eventTypes" name="type" id="type">
+            <input id="type" list="eventTypes" name="type">
             <datalist id="eventTypes">
                 <option ng-repeat="item in form.suggestEventType()" value="{{item}}"></option>
             </datalist></md-input-container>
