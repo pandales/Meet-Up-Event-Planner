@@ -25,8 +25,8 @@ angular.module('meetUpEventPlannerApp')
 
       formTracker.init(addEventForm);
 
-      vm.suggestEventType = function (q) {
-        return event.getTypes(q);
+      vm.suggestEventType = function () {
+        return event.getTypes();
       };
 
       vm.add = function () {

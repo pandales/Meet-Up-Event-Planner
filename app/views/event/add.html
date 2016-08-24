@@ -13,26 +13,13 @@
                 <div ng-message="required">The event name is required</div>
             </div>
         </md-input-container>
-
-        <md-autocomplete md-search-text="form.event.type"
-                         md-floating-label="What is your event about?"
-                         placeholder="What is your event about?"
-                         md-selected-item="form.event.typeSelected"
-                         md-items="item in form.suggestEventType(form.event.type)"
-                         md-item-text="item"
-                         md-input-name="type"
-                         md-input-id="type"
-                         required>
-            <md-item-template>
-                <span md-highlight-text="form.event.type">{{item}}</span>
-            </md-item-template>
-            <div ng-messages="addEventForm.type.$error" ng-show="addEventForm.type.$touched" role="alert">
-                <div ng-message="required">The event type is required</div>
-            </div>
-
-        </md-autocomplete>
-
-
+        <md-input-container>
+            <label for="type">What is your event about?</label>
+            <input list="eventTypes" name="type" id="type">
+            <datalist id="eventTypes">
+                <option ng-repeat="item in form.suggestEventType()" value="{{item}}"></option>
+            </datalist>
+        </md-input-container>
         <md-input-container>
             <label for="eventHost">Event Host</label>
             <input name="eventHost"

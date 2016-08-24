@@ -12,7 +12,6 @@ angular.module('meetUpEventPlannerApp')
       template: '<div></div>',
       restrict: 'A',
       require: 'ngModel',
-      /*transclude: true,*/
       link: function postLink(scope, element, attrs, ctrl) {
         function validationError(value) {
           var isValid = true;

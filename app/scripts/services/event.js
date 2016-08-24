@@ -37,13 +37,17 @@ angular.module('meetUpEventPlannerApp')
         update: function () {
 
         },
-        getTypes: function (q) {
+        filterTypes: function (q) {
 
           return _.filter(eventTypes, function (option) {
             if (option.indexOf(q) >= 0) {
               return option;
             }
           });
+        },
+        getTypes: function (q) {
+
+          return eventTypes;
         },
         getAll: function () {
           return events;
