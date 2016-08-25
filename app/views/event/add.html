@@ -11,7 +11,8 @@
                    autofocus>
             <div ng-messages="addEventForm.eventName.$error" ng-show="addEventForm.eventName.$touched" role="alert">
                 <div ng-message="required">The event name is required</div>
-            </div></md-input-container>
+            </div>
+        </md-input-container>
 
         <md-input-container>
           <label for="eventType">What is your event about?</label>
@@ -24,7 +25,8 @@
               <div ng-message="required">The event type is required</div></div>
             <datalist id="eventTypes">
                 <option ng-repeat="item in form.suggestEventType()" value="{{item}}"></option>
-            </datalist></md-input-container>
+            </datalist>
+        </md-input-container>
 
         <md-input-container>
             <label for="eventHost">Event Host</label>
@@ -35,7 +37,8 @@
                    required>
             <div ng-messages="addEventForm.eventHost.$error" ng-show="addEventForm.eventHost.$touched" role="alert">
                 <div ng-message="required">The event host is required</div>
-            </div></md-input-container>
+            </div>
+        </md-input-container>
 
         <google-location-input ng-model="form.event.address"
                                form="addEventForm"
@@ -43,7 +46,9 @@
                                id="address"
                                name="address"
                                placeholder="insert a location"
-                               required></google-location-input>
+                               required>
+
+        </google-location-input>
 
         <div class="event-date">
             <h5>Event Date</h5>
@@ -54,13 +59,14 @@
                        ng-model="form.event.startDate"
                        id="startDate"
                        min="{{form.minDate}}"
-                       panda-min-date="{{form.today}}"
+                       ng-min="form.minDate"
                        class="md-input"
                        required>
                 <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.startDate.$touched" role="alert">
                     <div ng-message="required">The {{label}} is required</div>
-                    <div ng-message="mindatelocal">The start date time must be greater than now</div>
-                </div></md-input-container>
+                    <div ng-message="min">The start date time must be greater than now</div>
+                </div>
+            </md-input-container>
 
             <md-input-container class="datetime">
                 <label for="endDate">End date time</label>
@@ -71,13 +77,14 @@
                        id="endDate"
                        ng-focus="startDate = form.dateToString(form.event.startDate)"
                        min="{{startDate}}"
-                       panda-min-date="{{form.event.startDate}}"
+                       ng-min="{{startDate}}"
                        class="md-input"
                        required>
                 <div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.endDate.$touched" role="alert">
                     <div ng-message="required">The end date is required</div>
-                    <div ng-message="mindatelocal">The end date time must be less than start date</div>
-                </div></md-input-container>
+                    <div ng-message="min">The end date time must be greater than start date</div>
+                </div>
+            </md-input-container>
         </div>
 
         <md-input-container>
@@ -93,13 +100,15 @@
                  role="alert">
                 <div ng-message="required">You must invite to some people using their email addresses</div>
                 <div ng-message="invalidemail">You must write valid email addresses</div>
-            </div></md-input-container>
+            </div>
+        </md-input-container>
 
         <md-input-container>
             <label for="message">Message to guests (optional)</label>
             <textarea name="message"
                       id="message"
-                      ng-model="form.event.message"></textarea></md-input-container>
+                      ng-model="form.event.message"></textarea>
+        </md-input-container>
 
         <div class="actions">
             <md-button class="md-raised"

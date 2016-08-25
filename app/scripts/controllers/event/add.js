@@ -15,8 +15,27 @@ angular.module('meetUpEventPlannerApp')
       vm.event = {};
       vm.currentUser = account.getCurrentAccount();
 
+      var fillZero = function (check) {
+
+        if (String(check).length == 1) {
+         return "0"+check;
+        } else {
+          return check;
+        }
+      };
+
       vm.dateToString =  function (date) {
-        return date.toISOString().slice(0,17) + "00";
+        //return date.toISOString().slice(0,17) + "00";
+        var year = date.getFullYear();
+        var month = fillZero(date.getMonth() +  1);
+        var day = fillZero(date.getDate());
+        var hours = fillZero(date.getHours());
+        var minutes = fillZero(date.getMinutes());
+        var seconds = "00";
+
+        return year + "-" + month + "-" + day + "T" +
+          hours + ":" + minutes + ":" + seconds;
+
       };
 
       // set the min day as the current day

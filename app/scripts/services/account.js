@@ -25,7 +25,7 @@ angular.module('meetUpEventPlannerApp')
       login: function (email) {
         var accounts = $localstorage.getObject("accounts");
         var accountIndex = _.findIndex(accounts, function(o) {
-          return o.email === email;
+          return o.email == email;
         });
 
         if (accountIndex >= 0) {
@@ -43,7 +43,7 @@ angular.module('meetUpEventPlannerApp')
         var accounts = $localstorage.getObject("accounts");
         var currentAccountReference = this.getCurrentAccount();
         var accountIndex = _.findIndex(accounts, function(o) {
-          return o.id === currentAccountReference.id;
+          return o.id == currentAccountReference.id;
         });
         accounts[accountIndex] = currentAccountReference;
         $localstorage.setObject('accounts', accounts);
