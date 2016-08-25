@@ -45,7 +45,7 @@ module.exports = function (grunt) {
         }
       },
       jsTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['test/spec/**/*.js'],
         tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
       },
       compass: {
@@ -127,14 +127,14 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/**/*.js'
         ]
       },
       test: {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['test/spec/**/*.js']
       }
     },
 
@@ -147,11 +147,11 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/**/*.js'
         ]
       },
       test: {
-        src: ['test/spec/{,*/}*.js']
+        src: ['test/spec/**/*.js']
       }
     },
 
@@ -290,7 +290,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/scripts/**/*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',

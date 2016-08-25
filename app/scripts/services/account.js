@@ -9,10 +9,8 @@
  */
 angular.module('meetUpEventPlannerApp')
   .service('account',['$localstorage', function ($localstorage) {
-    var self = this;
-    //var currentAccount = {};
-    //TODO:
-    var currentAccount = $localstorage.getObject("accounts")[0]
+    var currentAccount = $localstorage.getObject("accounts")[0];
+
     return {
       create: function (accountData) {
         var accounts = $localstorage.getObject("accounts") || [];
@@ -27,7 +25,7 @@ angular.module('meetUpEventPlannerApp')
       login: function (email) {
         var accounts = $localstorage.getObject("accounts");
         var accountIndex = _.findIndex(accounts, function(o) {
-          return o.email == email;
+          return o.email === email;
         });
 
         if (accountIndex >= 0) {
@@ -45,7 +43,7 @@ angular.module('meetUpEventPlannerApp')
         var accounts = $localstorage.getObject("accounts");
         var currentAccountReference = this.getCurrentAccount();
         var accountIndex = _.findIndex(accounts, function(o) {
-          return o.id == currentAccountReference.id;
+          return o.id === currentAccountReference.id;
         });
         accounts[accountIndex] = currentAccountReference;
         $localstorage.setObject('accounts', accounts);
@@ -54,5 +52,5 @@ angular.module('meetUpEventPlannerApp')
         // to create a event
       },
       isLogged: (_.size(currentAccount) > 0)
-    }
+    };
   }]);

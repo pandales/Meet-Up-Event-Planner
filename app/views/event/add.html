@@ -14,8 +14,14 @@
             </div></md-input-container>
 
         <md-input-container>
-            <label for="type">What is your event about?</label>
-            <input id="type" list="eventTypes" name="type">
+          <label for="eventType">What is your event about?</label>
+          <input name="eventType"
+                 id="eventType"
+                 ng-model="form.event.type"
+                 list="eventTypes"
+                 required>
+            <div ng-messages="addEventForm.eventType.$error" ng-show="addEventForm.eventType.$touched" role="alert">
+              <div ng-message="required">The event type is required</div></div>
             <datalist id="eventTypes">
                 <option ng-repeat="item in form.suggestEventType()" value="{{item}}"></option>
             </datalist></md-input-container>

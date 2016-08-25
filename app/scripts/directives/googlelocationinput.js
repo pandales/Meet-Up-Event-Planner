@@ -9,7 +9,7 @@
 angular.module('meetUpEventPlannerApp')
   .directive('googleLocationInput', function () {
     // Shared variables
-    var placeSearch, autocomplete;
+    var autocomplete;
     var componentForm = {
       street_number: 'short_name',
       route: 'long_name',
@@ -17,40 +17,6 @@ angular.module('meetUpEventPlannerApp')
       administrative_area_level_1: 'short_name',
       country: 'long_name',
       postal_code: 'short_name'
-    };
-
-    return {
-      templateUrl: 'scripts/directives/googlelocationinput.html',
-      restrict: 'E',
-      scope: {
-        ngModel: "=",
-        form: "=",
-        ngKeyup: "@",
-        id: "@",
-        placeholder: "@",
-        required: "@",
-        name: "@",
-        label: "@"
-      },
-      link: function postLink(scope, element, attrs) {
-        var inputElement = element[0].querySelector("input");
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete = new google.maps.places.Autocomplete(inputElement,
-          {types: ['geocode']});
-
-        autocomplete.addListener('place_changed', fillInAddress.bind("", scope, inputElement));
-        inputElement.addEventListener('keyup', function (e) {
-          if (e.keyCode != "32"  && typeof scope.ngModel != 'undefined' &&
-            typeof scope.ngModel.location != 'undefined') {
-            scope.ngModel.location = null;
-          }
-        });
-
-        // Remove the default google placeholder
-        inputElement.placeholder = "";
-      }
     };
 
     // Support function
@@ -84,24 +50,37 @@ angular.module('meetUpEventPlannerApp')
     }
 
 // [END region_fillform]
+    return {
+      templateUrl: 'views/directives/googlelocationinput.html',
+      restrict: 'E',
+      scope: {
+        ngModel: "=",
+        form: "=",
+        ngKeyup: "@",
+        id: "@",
+        placeholder: "@",
+        required: "@",
+        name: "@",
+        label: "@"
+      },
+      link: function postLink(scope, element) {
+        var inputElement = element[0].querySelector("input");
 
-    // [START region_geolocation]
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var geolocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          var circle = new google.maps.Circle({
-            center: geolocation,
-            radius: position.coords.accuracy
-          });
-          autocomplete.setBounds(circle.getBounds());
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete = new google.maps.places.Autocomplete(inputElement,
+          {types: ['geocode']});
+
+        autocomplete.addListener('place_changed', fillInAddress.bind("", scope, inputElement));
+        inputElement.addEventListener('keyup', function (e) {
+          if (e.keyCode !== "32"  && typeof scope.ngModel !== 'undefined' &&
+            typeof scope.ngModel.location !== 'undefined') {
+            scope.ngModel.location = null;
+          }
         });
+
+        // Remove the default google placeholder
+        inputElement.placeholder = "";
       }
-    }
-    // [END region_geolocation]
+    };
   });

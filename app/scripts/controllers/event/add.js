@@ -8,8 +8,8 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('EventAddCtrl', ['event', 'formTracker', 'account', '$timeout',
-    function (event, formTracker, account, $timeout) {
+  .controller('EventAddCtrl', ['event', 'account', '$timeout',
+    function (event, account, $timeout) {
       var vm = this;
       vm.completedPercent = 0;
       vm.event = {};
@@ -22,8 +22,6 @@ angular.module('meetUpEventPlannerApp')
       // set the min day as the current day
       vm.today = new Date();
       vm.minDate = vm.dateToString(vm.today);
-
-      formTracker.init(addEventForm);
 
       vm.suggestEventType = function () {
         return event.getTypes();

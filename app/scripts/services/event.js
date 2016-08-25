@@ -29,7 +29,7 @@ angular.module('meetUpEventPlannerApp')
         },
         get: function (eventId) {
           var index = _.findIndex(events, function (o) {
-            return o.id == eventId;
+            return o.id ===eventId;
           });
 
           return events[index];
@@ -45,12 +45,12 @@ angular.module('meetUpEventPlannerApp')
             }
           });
         },
-        getTypes: function (q) {
+        getTypes: function () {
 
           return eventTypes;
         },
         getAll: function () {
           return events;
         }
-      }
+      };
     }]);

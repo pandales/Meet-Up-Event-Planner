@@ -47,7 +47,7 @@ angular.module('meetUpEventPlannerApp')
             message.push(attrs.name + " must be have an uppercase letter");
           }
 
-          var illegalCharacterGroup = value.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
+          var illegalCharacterGroup = value.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g);
           if (illegalCharacterGroup) {
             isValid = false;
             illegalCharacterGroup.forEach(function (illegalChar) {

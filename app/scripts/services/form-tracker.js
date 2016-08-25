@@ -35,6 +35,5 @@ angular.module('meetUpEventPlannerApp')
       getPercent: function (form) {
         return (1 - (getErrors(form) / this.requiredFields.length))*100;
       }
-
-    }
+    };
   });

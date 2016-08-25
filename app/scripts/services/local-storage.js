@@ -25,5 +25,5 @@ angular.module('meetUpEventPlannerApp')
       clear: function () {
         $window.localStorage.clear();
       }
-    }
+    };
   }]);

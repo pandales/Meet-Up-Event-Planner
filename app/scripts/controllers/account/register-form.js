@@ -8,8 +8,8 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('AccountRegisterFormCtrl', ['account', 'formTracker',
-    function (account, formTracker) {
+  .controller('AccountRegisterFormCtrl', ['account',
+    function (account) {
       var vm = this;
       vm.completedPercent = 0;
       vm.account = {};
@@ -25,13 +25,6 @@ angular.module('meetUpEventPlannerApp')
 
       vm.updateAccount = function () {
         account.updateAccount();
-      };
-
-      formTracker.init(accountForm);
-
-      vm.track = function (form) {
-
-        vm.completedPercent = formTracker.getPercent(form);
       };
 
       vm.passwordValidation = function () {
