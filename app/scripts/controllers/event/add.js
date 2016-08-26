@@ -24,7 +24,13 @@ angular.module('meetUpEventPlannerApp')
         }
       };
 
-      vm.dateToString =  function (date) {
+      vm.dateToString =  function (date, extraHours) {
+
+        if (typeof extraHours !== 'undefined') {
+          var dateTime = date.getTime();
+          date.setTime(dateTime + extraHours * 60 * 60 * 1000);
+        }
+        console.log(date);
         //return date.toISOString().slice(0,17) + "00";
         var year = date.getFullYear();
         var month = fillZero(date.getMonth() +  1);

@@ -75,7 +75,7 @@
                        ng-model="form.event.endDate"
                        ng-disabled="!form.event.startDate"
                        id="endDate"
-                       ng-focus="startDate = form.dateToString(form.event.startDate)"
+                       ng-focus="startDate = form.dateToString(form.event.startDate, 1)"
                        min="{{startDate}}"
                        ng-min="{{startDate}}"
                        class="md-input"
