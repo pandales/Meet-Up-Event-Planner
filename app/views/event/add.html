@@ -75,14 +75,14 @@
                        ng-model="form.event.endDate"
                        ng-disabled="!form.event.startDate"
                        id="endDate"
-                       ng-focus="startDate = form.dateToString(form.event.startDate, 1)"
+                       ng-focus="startDate = form.dateToString(form.event.startDate, 0.5)"
                        min="{{startDate}}"
                        ng-min="{{startDate}}"
                        class="md-input"
                        required>
                 <div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.endDate.$touched" role="alert">
                     <div ng-message="required">The end date is required</div>
-                    <div ng-message="min">The end date time must be greater than start date</div>
+                    <div ng-message="min">The end date time must be almost 30 min greater than start date</div>
                 </div>
             </md-input-container>
         </div>

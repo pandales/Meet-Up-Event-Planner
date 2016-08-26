@@ -3,8 +3,9 @@
     <section class="form-panel" ng-hide="form.registered" layout-fill="">
       <h2> Sign up </h2>
       <progress-form form="accountForm"></progress-form><md-input-container>
-        <label>Name</label>
-        <input name="name"
+        <label for="name">Name</label>
+        <input id="name"
+               name="name"
                autocomplete="name"
                ng-model="form.account.name"
                required
@@ -15,8 +16,9 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Email address</label>
+        <label for="email">Email address</label>
         <input type="email"
+               id="email"
                name="email"
                autocomplete="email"
                ng-model="form.account.email"
@@ -28,8 +30,9 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Password</label>
+        <label for="password">Password</label>
         <input type="password"
+               id="password"
                name="password"
                minlength="8"
                maxlength="16"
@@ -60,18 +63,28 @@
       </p>
       <h3>more info</h3>
       <md-input-container>
-        <label>Employer</label>
-        <input name="employer" ng-model="form.account.employer" autocomplete="organization">
+        <label for="employer">Employer</label>
+        <input name="employer"
+               id="employer"
+               ng-model="form.account.employer"
+               autocomplete="organization">
       </md-input-container>
 
       <md-input-container>
-        <label>Job title</label>
-        <input name="job-title" ng-model="form.account.jobTitle" autocomplete="organization-title">
+        <label for="jobTitle">Job title</label>
+        <input name="job-title"
+               id="jobTitle"
+               ng-model="form.account.jobTitle"
+               autocomplete="organization-title">
       </md-input-container>
 
       <md-input-container>
-        <label>Birthday</label>
-        <input type="date" name="birthday" ng-model="form.account.birthday" autocomplete="bday">
+        <label for="birthday">Birthday</label>
+        <input type="date"
+               id="birthday"
+               name="birthday"
+               ng-model="form.account.birthday"
+               autocomplete="bday">
       </md-input-container>
       <div class="actions">
         <md-button class="md-raised" ng-click="form.updateAccount()">

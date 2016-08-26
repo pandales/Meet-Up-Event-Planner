@@ -8,8 +8,8 @@
  * Controller of the meetUpEventPlannerApp
  */
 angular.module('meetUpEventPlannerApp')
-  .controller('AccountRegisterFormCtrl', ['account',
-    function (account) {
+  .controller('AccountRegisterFormCtrl', ['account', '$timeout',
+    function (account, $timeout) {
       var vm = this;
       vm.completedPercent = 0;
       vm.account = {};
@@ -30,4 +30,8 @@ angular.module('meetUpEventPlannerApp')
       vm.passwordValidation = function () {
         return false;
       };
+
+      $timeout(function(){
+        document.getElementById("name").focus();
+      });
     }]);
